@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:foodpanda/Constants/MyColors.dart';
-import 'package:foodpanda/Constants/VarConstants.dart';
 import 'package:foodpanda/Data/ApiRepository.dart';
 import 'package:foodpanda/Widgets/MyDrawer.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
@@ -19,6 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
      //print("products $products");
      print(products.length);
      print(products[0].id);
+
    }
 
   @override
@@ -108,22 +110,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Expanded(
-                child: ListView.builder(
+                child: products != null ? ListView.builder(
             itemCount: products.length,
             itemBuilder: (BuildContext context, int index) {
                 return Card(
                   elevation: 50,
                   shadowColor: Colors.black,
-                  color: Colors.greenAccent[100],
+                  color: Colors.white,
                   child: SizedBox(
                     width: 300,
-                    height: 500,
+                    height: 400,
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Column(
                         children: [
                           CircleAvatar(
-                            backgroundColor: Colors.green[500],
+                            backgroundColor: Colors.pink,
                             radius: 108,
                             child: CircleAvatar(
                               backgroundImage: NetworkImage('${products[index].image}'), //NetworkImage
@@ -133,28 +135,24 @@ class _MyHomePageState extends State<MyHomePage> {
                           const SizedBox(
                             height: 10,
                           ), //SizedBox
-                          Text(
-                            '${products[index].title}'.substring(0,50),
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Colors.green[900],
-                              fontWeight: FontWeight.w500,
-                            ), //Textstyle
-                          ), //Text
+                         //Text
                           const SizedBox(
                             height: 10,
                           ), //SizedBox
-                           Text(
-                            '${products[index].description}'.substring(0,100),
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.green,
-                            ), //Textstyle
-                          ), //Text
+                           Expanded(
+                             child: Text(
+                              '${products[index].description}',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.grey,
+                              ), //Textstyle
+                          ),
+                           ), //Text
                           const SizedBox(
                             height: 10,
                           ), //SizedBox
                           Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
@@ -168,10 +166,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                 width: 10,
                               ),
                               ElevatedButton(
-                                onPressed: () => 'Null',
+                                onPressed: (){},
                                 style: ButtonStyle(
                                     backgroundColor:
-                                    MaterialStateProperty.all(Colors.green)),
+                                    MaterialStateProperty.all(Colors.pink)),
                                 child: Padding(
                                   padding: const EdgeInsets.all(4),
                                   child: Row(
@@ -189,9 +187,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     ), //Padding
                   ), //SizedBox
                 );
-            }),
+            }) : Container(),
               ),
-
             ]
         ),
       ),
