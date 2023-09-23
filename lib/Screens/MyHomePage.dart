@@ -4,6 +4,8 @@ import 'package:foodpanda/Constants/MyColors.dart';
 import 'package:foodpanda/Data/ApiRepository.dart';
 import 'package:foodpanda/Widgets/MyDrawer.dart';
 
+import 'FastFood.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
@@ -20,6 +22,8 @@ class _MyHomePageState extends State<MyHomePage> {
      //print("products $products");
      print(products.length);
      print(products[0].id);
+     setState(() {
+     });
 
    }
 
@@ -80,16 +84,16 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         drawer: MyDrawer(),
         body: Column(
-            //crossAxisAlignment: CrossAxisAlignment.center,
-            // mainAxisAlignment: MainAxisAlignment.center,
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 color: MyColors.primaryColor,
                 height: 75,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 15,
-                    vertical: 10
+                      horizontal: 15,
+                      vertical: 10
                   ),
                   child: TextFormField(
                     controller: _controller,
@@ -111,84 +115,198 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Expanded(
                 child: products != null ? ListView.builder(
-            itemCount: products.length,
-            itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  elevation: 50,
-                  shadowColor: Colors.black,
-                  color: Colors.white,
-                  child: SizedBox(
-                    width: 300,
-                    height: 400,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.pink,
-                            radius: 108,
-                            child: CircleAvatar(
-                              backgroundImage: NetworkImage('${products[index].image}'), //NetworkImage
-                              radius: 100,
-                            ), //CircleAvatar
-                          ), //CircleAvatar
-                          const SizedBox(
-                            height: 10,
-                          ), //SizedBox
-                         //Text
-                          const SizedBox(
-                            height: 10,
-                          ), //SizedBox
-                           Expanded(
-                             child: Text(
-                              '${products[index].description}',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.grey,
-                              ), //Textstyle
-                          ),
-                           ), //Text
-                          const SizedBox(
-                            height: 10,
-                          ), //SizedBox
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                '${products[index].price}',
-                                style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.red,
-                                ), //Textstyle
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              ElevatedButton(
-                                onPressed: (){},
-                                style: ButtonStyle(
-                                    backgroundColor:
-                                    MaterialStateProperty.all(Colors.pink)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(4),
-                                  child: Row(
-                                    children: const [
-                                      Icon(Icons.touch_app),
-                                      Text('Visit')
-                                    ],
+                    shrinkWrap: false,
+                    itemCount: products.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Card(
+                        elevation: 50,
+                        shadowColor: Colors.black,
+                        color: Colors.white,
+                        child: SizedBox(
+                          width: 300,
+                          height: 400,
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Column(
+                              children: [
+                                CircleAvatar(
+                                  backgroundColor: Colors.pink,
+                                  radius: 108,
+                                  child: CircleAvatar(
+                                    backgroundImage: NetworkImage('${products[index].image}'), //NetworkImage
+                                    radius: 100,
+                                  ), //CircleAvatar
+                                ), //CircleAvatar
+                                const SizedBox(
+                                  height: 10,
+                                ), //SizedBox
+                                //Text
+                                const SizedBox(
+                                  height: 10,
+                                ), //SizedBox
+                                Expanded(
+                                  child: Text(
+                                    '${products[index].description}',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.grey,
+                                    ), //Textstyle
+                                  ),
+                                ), //Text
+                                const SizedBox(
+                                  height: 10,
+                                ), //SizedBox
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'price :${products[index].price}',
+                                      style: TextStyle(
+                                        fontSize: 25,
+                                        color: Colors.red,
+                                      ), //Textstyle
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: (){},
+                                      style: ButtonStyle(
+                                          backgroundColor:
+                                          MaterialStateProperty.all(Colors.pink)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(4),
+                                        child: Row(
+                                          children: const [
+                                            Icon(Icons.touch_app),
+                                            Text('Buy')
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ) //SizedBox
+                              ],
+                            ), //Column
+                          ), //Padding
+                        ), //SizedBox
+                      );
+                    }) : Container(),
+              ),
+              Expanded(
+                child: products != null ? ListView.builder(
+                    shrinkWrap: false,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: products.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Card(
+                        elevation: 50,
+                        shadowColor: Colors.black,
+                        color: Colors.white,
+                        child: SizedBox(
+                          width: 300,
+                          height: 75,
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Column(
+                              children: [
+                                CircleAvatar(
+                                  backgroundColor: Colors.pink,
+                                  radius: 108,
+                                  child: CircleAvatar(
+                                    backgroundImage: NetworkImage('${products[index].image}'), //NetworkImage
+                                    radius: 100,
                                   ),
                                 ),
-                              ),
-                            ],
-                          ) //SizedBox
-                        ],
-                      ), //Column
-                    ), //Padding
-                  ), //SizedBox
-                );
-            }) : Container(),
+                                Text('${products[index].price}',
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      color: Colors.pink
+                                  ),)
+                              ],
+                            ), //Column
+                          ), //Padding
+                        ), //SizedBox
+                      );
+                    }) : Container(),
               ),
+              InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                  const FastFood()
+                  ));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            children: [
+                              Text("Burger",
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold
+                                ),),
+                              SizedBox(height: 20,),
+                              Text("*****",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold
+                                ),)
+                            ],
+                          ),
+                          Icon(Icons.emoji_food_beverage_rounded,
+                            size: 50,
+                            color: MyColors.secondaryTextColor,)
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                  const FastFood()
+                  ));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            children: [
+                              Text("Cake",
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold
+                                ),),
+                              SizedBox(height: 20,),
+                              Text("****",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold
+                                ),)
+                            ],
+                          ),
+                          Icon(Icons.cake,
+                            size: 50,
+                            color: MyColors.secondaryTextColor,)
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              )
             ]
         ),
       ),
