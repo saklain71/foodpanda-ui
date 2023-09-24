@@ -2,15 +2,11 @@
 
 A new Flutter project.
 
-## Getting Started
+![food1](https://github.com/saklain71/foodpanda-ui/assets/66348472/583588a5-ff11-45af-b6e2-3c8d3a65a1e5)
 
-This project is a starting point for a Flutter application.
+![food2](https://github.com/saklain71/foodpanda-ui/assets/66348472/2b5a8875-8253-416d-8858-d05a6f8e06e5)
 
-A few resources to get you started if this is your first Flutter project:
+![food4](https://github.com/saklain71/foodpanda-ui/assets/66348472/98f6e5b7-d01c-4023-b73b-fb2e53dee1ca)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
